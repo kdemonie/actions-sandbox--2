@@ -12,7 +12,7 @@ jobs:
   Build:
     uses: kdemonie/actions-sandbox/.github/workflows/build.yml@v1
     with:
-      RELEASE_CYCLE: "24MND03"
+      RELEASE_CYCLE: ${{vars.ENV_VAR}}
       ENVIRONMENT: "STAGING"
     secrets:
       inherit
