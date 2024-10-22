@@ -9,7 +9,7 @@ on:
         default: '25MR1'
 
 jobs:
-  call-workflow-passing-data:
+  Build:
     uses: kdemonie/actions-sandbox/.github/workflows/build.yml@v1
     with:
       RELEASE_CYCLE: "24MND03"
