@@ -1,1 +1,19 @@
+name: Reuse-build
 
+on:
+  workflow_dispatch:
+    inputs:
+      release_cycle:
+        description: 'Enter the release cycle'
+        required: true
+        default: '25MR1'
+
+jobs:
+  call-workflow-passing-data:
+    uses: kdemonie/actions-sandbox/.github/workflows/build.yml@v1
+    with:
+      RELEASE_CYCLE: "24MND03"
+      ENVIRONMENT: "STAGING"
+    secrets:
+      inherit
+  
