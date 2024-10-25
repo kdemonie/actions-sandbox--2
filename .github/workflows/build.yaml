@@ -4,10 +4,17 @@ on:
   workflow_dispatch:
 
 jobs:
+  Prepare-env:
+    runs-on: ubuntu-latest
+    steps:
+       - run: echo "null"
+    outputs:
+      RELEASE_CYCLE: ${{ vars.BTP_SUBACCOUNT }}
   Build:
     uses: kdemonie/actions-sandbox/.github/workflows/build.yml@v1
+    needs: [Prepare-env]
     with:
-      RELEASE_CYCLE: ${{ vars.BTP_SUBACCOUNT }}
+      RELEASE_CYCLE: ${{ needs.Prepare-env.outputs.RELEASE_CYCLE }}
       ENVIRONMENT: "STAGING"
     secrets:
       inherit
