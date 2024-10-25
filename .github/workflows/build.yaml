@@ -9,9 +9,12 @@ jobs:
     environment:
       name: PRODUCTION
     steps:
-       - run: echo "null"
+       - name: print
+         run: echo "${{ vars.BTP_SUBACCOUNT }}"
+       - name: init
+         run: echo "RELEASE_CYCLE=${{ vars.BTP_SUBACCOUNT }}" >> $GITHUB_OUTPUT
     outputs:
-      RELEASE_CYCLE: ${{ vars.BTP_SUBACCOUNT }}
+      RELEASE_CYCLE: ${{ steps.init.outputs.RELEASE_CYCLE }}
   Build:
     uses: kdemonie/actions-sandbox/.github/workflows/build.yml@v1
     needs: [Prepare-env]
