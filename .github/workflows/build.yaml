@@ -7,7 +7,7 @@ jobs:
   Build:
     uses: kdemonie/actions-sandbox/.github/workflows/build.yml@v1
     with:
-      RELEASE_CYCLE: ${{ vars.RELEASE }}
+      RELEASE_CYCLE: ${{ vars.BTP_SUBACCOUNT }}
       ENVIRONMENT: "STAGING"
     secrets:
       inherit
