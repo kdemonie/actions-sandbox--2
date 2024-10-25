@@ -6,6 +6,7 @@ on:
 jobs:
   Prepare-env:
     runs-on: ubuntu-latest
+    environment: PRODUCTION
     steps:
        - name: print
          run: echo "${{ vars.BTP_SUBACCOUNT }}"
