@@ -19,12 +19,12 @@ jobs:
     needs: [Prepare-env]
     steps:
        - name: print
-         run: echo "${{ needs.Prepare-env.RELEASE_CYCLE }}"
+         run: echo "${{ needs.Prepare-env.outputs.RELEASE_CYCLE }}"
   Build:
     uses: kdemonie/actions-sandbox/.github/workflows/build.yml@v1
     needs: [Prepare-env]
     with:
-      RELEASE_CYCLE: ${{ needs.Prepare-env.RELEASE_CYCLE }}
+      RELEASE_CYCLE: ${{ needs.Prepare-env.outputs.RELEASE_CYCLE }}
       ENVIRONMENT: "STAGING"
     secrets:
       inherit
